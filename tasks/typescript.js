@@ -40,29 +40,21 @@ gulp.task('tsc-e2e', ['clean-ts-test'], function () {
 });
 
 /* Lint typescripts */
-gulp.task('tslint', function () {
+/*gulp.task('tslint', function () {
     return lintTs(tsFiles);
-});
+});*/
 
-gulp.task('tslint-app', function () {
+/*gulp.task('tslint-app', function () {
     return lintTs(config.tsFiles);
-});
+});*/
 
-gulp.task('tslint-unit', function () {
-    return lintTs(tsUnitFiles);
-});
-
-gulp.task('tslint-e2e', function () {
-    return lintTs(tsE2EFiles);
-});
-
-function lintTs(files) {
+/*function lintTs(files) {
     return gulp.src(files)
         .pipe(tslint())
         .pipe(tslint.report('prose', {
           summarizeFailureOutput: true
         }));
-}
+}*/
 
 function compileTs(files, watchMode) {
     var inline = !argv.excludeSource;
@@ -74,11 +66,11 @@ function compileTs(files, watchMode) {
             base: config.src,
             outDir: config.tmp
         })
-        .pipe(tslint())
+        /*.pipe(tslint())
         .pipe(tslint.report('prose', {
             summarizeFailureOutput: true,
             emitError: !watchMode
-        }))
+        }))*/
         .pipe(sourcemaps.init())
         .pipe(ts(tsProject))
         .on('error', function () {

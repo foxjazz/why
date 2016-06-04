@@ -12,6 +12,8 @@
     "postinstall": "typings install",
     "start": "gulp",
     "test": "gulp test",
+    "tsc": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
+    "lite": "lite-server",
     "coveralls": "node ./node_modules/coveralls/bin/coveralls.js < ./report/remap/lcov.info"
   },
   "keywords": [
@@ -39,6 +41,7 @@
     "@angular/http": "2.0.0-rc.1",
     "@angular/platform-browser": "2.0.0-rc.1",
     "@angular/platform-browser-dynamic": "2.0.0-rc.1",
+    "@angular/router-deprecated": "2.0.0-rc.1",
     "@angular/router": "2.0.0-rc.1",
     "bootstrap-sass": "^3.3.6",
     "es6-shim": "^0.35.0",
@@ -83,6 +86,7 @@
     "traceur": "~0.0.110",
     "tslint": "^3.10.2",
     "typings": "^1.0.4",
-    "yargs": "^4.7.1"
+    "yargs": "^4.7.1",
+    "lite-server": "*"
   }
 }

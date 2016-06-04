@@ -1,14 +1,8 @@
-import {bootstrap} from '@angular/platform-browser-dynamic';
-import {enableProdMode} from '@angular/core';
-import {ROUTER_PROVIDERS} from '@angular/router';
+import {bootstrap}    from '@angular/platform-browser-dynamic';
 import {AppComponent} from './app.component';
+import { HTTP_PROVIDERS  } from '@angular/http';
+//import { ROUTER_PROVIDERS } from '@angular/router-deprecated';
+import 'rxjs/add/operator/map';
+bootstrap(AppComponent, [HTTP_PROVIDERS]);
 
-declare var ENV: string;
-
-if (ENV === 'production') {
-    enableProdMode();
-}
-
-bootstrap(AppComponent, [
-    ROUTER_PROVIDERS
-]);
+//bootstrap(RegionComponent, [HTTP_PROVIDERS, ROUTER_PROVIDERS]);
