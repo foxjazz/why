@@ -16,6 +16,7 @@ export class PriceBoardComponent implements OnInit {
   public resItems: Array<items>;
   public prices: Array<PriceData>;
   public priceBandA: Array<PriceBand>;
+  public priceBandB: Array<PriceBand>;
   constructor(private evePricingService: EvePricingService) { }
   ngOnInit() {
     this.priceBandA = new Array<PriceBand>();
@@ -32,16 +33,14 @@ export class PriceBoardComponent implements OnInit {
         document.getElementById('noData').hidden = false;
         return;
     }
-    
-     jsondata = localStorage.getItem('SelEveItems');
+    jsondata = localStorage.getItem('SelEveItems');
          if(jsondata != null && jsondata.indexOf('marketGroup') > 0)
          {
              let restry = JSON.parse(jsondata);
              this.selEveItems = restry;
-         }  else {  
+         }  else {
             this.selEveItems = new Array<ItemType>();
          }
-    
   }
   refreshData() {
     this.priceBandA = new Array<PriceBand>();
@@ -53,6 +52,8 @@ export class PriceBoardComponent implements OnInit {
     let filtered: Array<items>;
     let i = 0;
     let pp = new Array<PriceData>();
+    let bb = new Array<PriceData>();
+    let bbs = new Array<PriceData>();
     let pps = new Array<PriceData>();
     for(i = 0; i < data.length; i++)
     {
@@ -66,17 +67,29 @@ export class PriceBoardComponent implements OnInit {
         p.location = data[i].location.name;
         pp.push(p);
       }
+      else{
+        let p: PriceData = new PriceData();
+        p.duration = data[i].duration;
+        p.price = data[i].price;
+        p.volume = data[i].volume;
+        p.range = data[i].range;
+        p.issued = data[i].issued;
+        p.location = data[i].location.name;
+        bb.push(p);
+      }
     }
-    pps = pp.sort((left,right): number => {if(left.price < right.price) return -1; if(left.price > right.price) return 1; else return 0;});
+    pps = pp.sort((left, right): number => {if(left.price < right.price) return -1; if(left.price > right.price) return 1; else return 0;});
+    bbs = bb.sort((left, right): number => {if(left.price < right.price) return 1; if(left.price > right.price) return -1; else return 0;});
     // NEW INTERFACE OBJECT
     let npb: PriceBand = {
       region: region,
       itemname: itemname,
-      pricedata: pps
+      pricedata: pps,
+      pricedataBuy: bbs
     };
     this.priceBandA.push(npb);
   }
-  
+
   private callPriceData(region: string, itemname: string,regionid: string, itemhref: string) {
     this.evePricingService.getPriceData(regionid, itemhref).subscribe(res => {
       if(res.items.length > 0)
