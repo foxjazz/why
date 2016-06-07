@@ -4,7 +4,7 @@
     <div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
     <div class="row">
     
-      <div class="col-xs-4">
+      <div class="col-xs-2">
       <!-- <ul class=heroes>
              <li *ngFor="let System of avSystems">
                 {{ System.location.name }} 
@@ -17,17 +17,17 @@
             </li>
       </ul>
       </div>
-      <div class="col-xs-5">
+      <div class="col-xs-3">
         <h3> > Systems </h3>
-       <ul class=heroes>
+       <ul class=station>
              <li *ngFor="let System of avSystems" [class.halselected]="hal === selectedHal" (click)="onSelectStation(System)">
-                {{ System.location.name }} 
+                <p>{{ System.location.name }}</p> 
              </li>
         </ul>
          <h3>> Selected Stations </h3>
-        <ul class=heroes>
+        <ul class=station>
              <li *ngFor="let sysshort of selSystems" [class.halselected]="hal === selectedHal" (click)="onRemoveStation(sysshort)">
-                {{ sysshort.system }} 
+               <p> {{ sysshort.system }} </p> 
              </li>
         </ul>
       </div>

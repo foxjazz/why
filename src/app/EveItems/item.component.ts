@@ -1,7 +1,7 @@
 import {Component,OnInit} from '@angular/core';
 import {ItemTypesService} from './ItemTypes.service';
 import {ItemType, ItemTypeDescriptor} from './ItemTypes';
-import {Istringdistance, stringdistance} from '../Assets/stringdistance';
+import {Istringdistance, stringdistance} from '../algs/stringdistance';
 
 @Component ({
   selector: 'sel-items',

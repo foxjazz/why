@@ -9,4 +9,5 @@ export interface type { id_str: string; href: string; id: number; name: string; 
 
 export class PriceData {price: number; volumeEntered: number; minVolumne: number; volume: number;
      range: string; location: string; type: string; duration: number; issued: string; }
-export interface PriceBand {region: string; itemname: string; pricedata: Array<PriceData>; pricedataBuy: Array<PriceData>}
+export interface PriceBand {region: string; itemname: string; station: string; l2pricedata: Array<Level2>; }
+export class Level2 {priceSell: number; volSell: number; Buyrange: string;  priceBuy: number; volBuy: number;}

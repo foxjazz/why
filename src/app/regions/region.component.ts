@@ -7,7 +7,7 @@ import 'rxjs/Rx';
 @Component({
     selector: 'sel-region',
     templateUrl: 'app/regions/region.component.html',
-    styleUrls: ['app/appstyle.css'],
+    styleUrls: ['app/regions/region.css'],
     providers: [HTTPEveService]
 })
 
@@ -28,27 +28,22 @@ export class RegionComponent implements OnInit {
     
       constructor(private eveService: HTTPEveService) { }
       
-
+      private notfound(sys: Array<ISystem>,s: string) : boolean {
+        for (let t of sys) {
+          if(t.location.name.indexOf(s) >= 0)
+            return false;
+        }
+        return true;
+      }
       private dedupe(sys: Array<ISystem>): Array<ISystem>
       {
         let res: Array<ISystem>;
         res = new Array<ISystem>();
-        let flag = false;
-          for ( let i = 0; i < sys.length; i++ ) {
-            flag = false;
-            if (i === 0) {
-              res.push(sys[i]);
-            }
-            for (let i1 = 0; i1 < res.length; i1++) {
-              if(sys[i].location.name === res[i1].location.name) {
-                flag = true;
-              }
-            }
-            if (!flag){
-               res.push(sys[i]);
-            }
-            i++;
-          }
+        for(let t of sys)
+        {
+          if(this.notfound(res,t.location.name))
+            res.push(t);
+        }
         return res;
       };
       
@@ -63,6 +58,7 @@ export class RegionComponent implements OnInit {
           }
           this.selSystems.push(this.tempSys[i]);
         }
+        localStorage.setItem('Systems', JSON.stringify(this.selSystems));
       }
     public onSelectStation(system: ISystem){
       if(this.selSystems == null){

@@ -1,0 +1,51 @@
+
+.selected {
+      background-color: #1f2f2f !important;
+      color: #c0c9c7;
+    }
+    .heroes {
+      background-color: #1f2f2f !important;
+      margin: 0 0 2em 0;
+      list-style-type: none;
+      padding: 0;
+      width: 35em;
+    }
+    .heroes .button {
+        width: 20em;
+        background-color: transparent;
+               border-radius: 4px 0 0 4px;
+    }
+    .heroes li {
+      cursor: pointer;
+      position: relative;
+      left: 2;
+      background-color: transparent;
+      margin: .5em;
+      padding: .3em 0;
+      border-radius: 4px;
+    }
+    
+    .heroes li.selected:hover {
+      background-color: #396763 !important;
+      color: #c0c9c7;
+    }
+    .heroes li:hover {
+      color: #c0c9c7;
+      background-color: #396763;
+      left: .1em;
+    }
+    .heroes .text {
+      position: relative;
+      top: -3px;
+    }
+    .heroes li p{
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: .8em;
+    }
+    .heroes .buttonold{
+       background-color: #1d2528;
+       color: #ade6fb;
+       margin: .8em;
+       border-radius: 4px 0 0 4px;
+    }

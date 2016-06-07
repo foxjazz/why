@@ -12,7 +12,7 @@ export class EvePricingService {
     //public typehref: string;
     constructor(private http: Http) { }
     getPriceData(regionid: string, typehref: string): Observable<PriceTypes> {
-        this.uri = 'https://crest-tq.eveonline.com/market/' + regionid + '/orders/sell/?type=' + typehref;
+        this.uri = 'https://crest-tq.eveonline.com/market/' + regionid + '/orders/?type=' + typehref;
         console.log('URI for price data' + this.uri);
         return  this.http.get(this.uri)
             .map((res: Response) => res.json());
