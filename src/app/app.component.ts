@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {RegionComponent} from './regions/region.component';
-import {ItemComponent} from './EveItems/item.component';
-import {PriceBoardComponent} from './PriceBoard/priceboard.component';
+import {fundComp} from './fundamentals/fundamental.comp';
+import {tclComp} from './tradingchecklist/tcl.comp';
+import {rkComp} from './recordkeeping/rk.comp';
 import {HelpComponent} from './Help/help.component';
 import 'rxjs/Rx';
 
@@ -10,56 +10,56 @@ import 'rxjs/Rx';
     template: `<h1>Eve Market Data</h1>
     <nav>
         <a (click)="menuitem('help')">Help</a>
-        <a (click)="menuitem('region')">Region</a>
-        <a (click)="menuitem('items')">Items</a>
-        <a (click)="menuitem('pb')">Price Board</a>
+        <a (click)="menuitem('fund')">Fundamentals</a>
+        <a (click)="menuitem('tcl')">Trading Checklist</a>
+        <a (click)="menuitem('rk')">Record Keeping</a>
     </nav>
     <div id="help">
         <sel-help> loading test </sel-help>
     </div>
-    <div id="region">
-        <sel-region> loading test </sel-region>
+    <div id="fund">
+        <sel-fund> loading check list </sel-fund>
     </div>
-    <div id="items">
-        <sel-items> loading items </sel-items>
+    <div id="tcl">
+        <sel-tcl> loading items </sel-tcl>
     </div>
    
-    <div id="pb">
-        <sel-pb> loading canvas </sel-pb>
+    <div id="rk">
+        <sel-rk> loading records </sel-rk>
     </div>
     `,
     styleUrls: ['app/appstyle.css'],
-    directives: [RegionComponent, ItemComponent, PriceBoardComponent, HelpComponent],
+    directives: [fundComp, tclComp, rkComp, HelpComponent],
   //  providers: [HTTP_PROVIDERS]
 })
 
 export class AppComponent implements OnInit {
     constructor(){}
     public menuitem(itm: string){
-                document.getElementById('items').hidden = true;
-                document.getElementById('pb').hidden = true;
-                document.getElementById('region').hidden = true;
+                document.getElementById('fund').hidden = true;
+                document.getElementById('tcl').hidden = true;
+                document.getElementById('rk').hidden = true;
                   document.getElementById('help').hidden = true;
-        switch(itm){
+        switch (itm) {
             case 'help': {
                 document.getElementById('help').hidden = false;
             }
             break;
-            case 'region': {
-                document.getElementById('region').hidden = false;
+            case 'fund': {
+                document.getElementById('fund').hidden = false;
             }
             break;
-            case 'items': {
-                 document.getElementById('items').hidden = false;
+            case 'rk': {
+                 document.getElementById('rk').hidden = false;
             }
             break;
-            case 'pb': {
-                 document.getElementById('pb').hidden = false;
+            case 'tcl': {
+                 document.getElementById('tcl').hidden = false;
             }
             break;
         }
     }
     ngOnInit() {
-        this.menuitem('region');
+        this.menuitem('fund');
     }
  }
