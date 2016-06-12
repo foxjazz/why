@@ -1,1 +1,27 @@
 <h1>{{title}}</h1>
+<h3> Trading checklist</h3>
+<form class="container" (submit)="saveTask()">
+<ul class="stocks">
+    <li>  
+    <input type="text" 
+      placeholder=""
+      [(ngModel)]="stock"
+      required>
+  </li>
+  <li>  
+    <input type="checkbox" 
+      name="tradingVolume"
+      [(ngModel)]="tradingVolume">
+    <label for="tradingVolume"> Volume</label>
+  </li>
+  <li>  
+    <input type="checkbox" 
+      name="isEMAok"
+      [(ngModel)]="isEMAok">
+    <label for="isEMAok"> Does the 2 day EMA fall below it's 0 line?</label>
+  </li>
+
+    <li> Is Trading Volume OK </li>
+</ul>
+</form>
+<p> trading volume: "{{tradingVolume}}"</p>
